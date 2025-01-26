@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walentynkowa Strona</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #fef2f4, #fbe7e9);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border: 1px solid #f3c6d9;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fade-in 0.5s ease-out;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, #ff85b2, #ff3385);
+            color: white;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff5e9f, #e60073);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #escape-button {
+            position: relative;
+        }
+
+        .text {
+
+            font-size: 24px;
+            color: #b44e75;
+            margin-bottom: 20px;
+            font-weight: 600;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">❤️ Czy będziesz moją walentynką? ❤️</div>
+        <img id="image" src="https://media.tenor.com/slOl9FdmblwAAAAj/peach-and-goma-peachcat.gif"
+            alt="Placeholder Image">
+        <div class="buttons">
+            <button id="normal-button">Tak </button>
+            <button id="escape-button">Nie</button>
+        </div>
+    </div>
+
+    <script>
+        const escapeButton = document.getElementById('escape-button');
+        const normalButton = document.getElementById('normal-button');
+        const image = document.getElementById('image');
+
+        // Funkcja do zmiany obrazka
+        function zmienObrazek(nowyObrazek) {
+            image.src = nowyObrazek;
+        }
+
+        // Zmieniamy obrazek po kliknięciu przycisku "Kliknij mnie"
+        normalButton.addEventListener('click', () => {
+            zmienObrazek('https://media1.tenor.com/m/DEAk7gMJ_8wAAAAC/peach-and-goma.gif');
+        });
+
+        // Zmieniamy obrazek po kliknięciu przycisku "Uciekaj"
+        escapeButton.addEventListener('click', () => {
+            zmienObrazek('https://media.tenor.com/qrMXo5T5HZAAAAAM/cute-cry.gif');
+        });
+
+        // Funkcja do uciekania przycisku
+        escapeButton.addEventListener('mouseenter', () => {
+            const randomX = Math.random() * (window.innerWidth - escapeButton.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - escapeButton.offsetHeight);
+
+            escapeButton.style.position = 'absolute';
+            escapeButton.style.left = `${randomX}px`;
+            escapeButton.style.top = `${randomY}px`;
+        });
+    </script>
+</body>
+
+</html>
